@@ -1,0 +1,21 @@
+version: "3.7"
+
+services:
+  localstack:
+    container_name: localstack
+    image: localstack/localstack:latest
+    environment:
+      - SERVICES=s3:4566
+      - HOSTNAME_EXTERNAL=localhost
+      - DEBUG=1
+      - PORT_WEB_UI=8082
+      - AWS_DEFAULT_REGION=us-east-1
+      - AWS_ACCESS_KEY_ID=access-key
+      - AWS_SECRET_ACCESS_KEY=secret-key
+    ports:
+      - '4566:4566'
+      - '8082:8082'
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./scripts/localstack/init-s3-bucket.sh:/docker-entrypoint-initaws.d/init-s3-bucket.sh
+      - ./scripts/file_copy.sh:/file_copy.sh
