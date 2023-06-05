@@ -1,7 +1,6 @@
 package com.gabs.localstack.controllers
 
 import com.gabs.localstack.services.AwsS3Service
-import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
